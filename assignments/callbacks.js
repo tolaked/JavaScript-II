@@ -45,26 +45,47 @@ getLength(items, length => {
   console.log(`The length of the array is ${length}.`);
 });
 
-function last(arr, cb) {
+const getLastItem = (arr, cb) => {
   // last passes the last item of the array into the callback.
-  cb(arr.length - 1);
-}
-getLength(items, lastItem => {
-  console.log(`The last item of the array is ${lastItem}.`);
+  cb(arr[arr.length - 1]);
+};
+getLastItem(items, lastItem => {
+  console.log(`The last item of the array is ${lastItem}`);
 });
 
 function sumNums(x, y, cb) {
   // sumNums adds two numbers (x, y) and passes the result to the callback.
+  cb(x + y);
 }
+sumNums(2, 4, sum => {
+  console.log(`The sum of two numbers is ${sum}.`);
+});
 
 function multiplyNums(x, y, cb) {
   // multiplyNums multiplies two numbers and passes the result to the callback.
+  cb(x * y);
 }
+multiplyNums(2, 4, num => {
+  console.log(`The mulltiplications of the two numbers is ${num}.`);
+});
 
-function contains(item, list, cb) {
+function contains(arr, list, cb) {
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
+  const isInArray = () => {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === list) {
+        return true;
+      }
+    }
+    return false;
+  };
+  cb(isInArray());
 }
+
+contains(items, "Gum", result => {
+  console.log(result ? "Gum is in the array" : "Gum is not in the array");
+});
 
 /* STRETCH PROBLEM */
 
