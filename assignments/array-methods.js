@@ -489,7 +489,16 @@ console.log(ticketPriceTotal);
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+const numbers = [1, 2, 3, 4, 5, 6, 7, 8];
+let even = [];
+const evenDigits = numbers.filter(evenNumber => evenNumber % 2 === 0);
+even.push(evenDigits);
+console.log(...even);
 
-// Problem 2
-
+// Problem 2)
+const number = [1, 2, 3, 4, 5, 6, 7, 8];
+const multiply = number.forEach(evenNumber => {
+  console.log(evenNumber * 2);
+});
+console.log(multiply);
 // Problem 3
