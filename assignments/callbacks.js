@@ -88,9 +88,14 @@ contains(items, "Gum", result => {
 });
 
 /* STRETCH PROBLEM */
-
-function removeDuplicates(array, cb) {
+let array = [1, 2, 3, 2, 3, 2, 5, 6, 6, 8];
+function removeDuplicates(arr, cb) {
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
+  const rem = new Set(arr);
+  cb([...rem]);
 }
+removeDuplicates(array, lastItem => {
+  console.log(`The unique items are ${lastItem}`);
+});
