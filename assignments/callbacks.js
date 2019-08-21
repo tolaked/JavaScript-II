@@ -1,6 +1,6 @@
 // Create a higher order function and invoke the callback function to test your work. You have been provided an example of a problem and a solution to see how this works with our items array.  Study both the problem and the solution to figure out the rest of the problems.
 
-const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
+const items = ["Pencil", "Notebook", "yo-yo", "Gum"];
 
 /* 
 
@@ -38,32 +38,64 @@ const items = ['Pencil', 'Notebook', 'yo-yo', 'Gum'];
   // "this Pencil is worth a million dollars!"
 */
 
+const getLength = (arr, cb) => {
+  cb(arr.length);
+};
+getLength(items, length => {
+  console.log(`The length of the array is ${length}.`);
+});
 
-function getLength(arr, cb) {
-  // getLength passes the length of the array into the callback.
-}
-
-function last(arr, cb) {
+const getLastItem = (arr, cb) => {
   // last passes the last item of the array into the callback.
-}
+  cb(arr[arr.length - 1]);
+};
+getLastItem(items, lastItem => {
+  console.log(`The last item of the array is ${lastItem}`);
+});
 
 function sumNums(x, y, cb) {
   // sumNums adds two numbers (x, y) and passes the result to the callback.
+  cb(x + y);
 }
+sumNums(2, 4, sum => {
+  console.log(`The sum of two numbers is ${sum}.`);
+});
 
 function multiplyNums(x, y, cb) {
   // multiplyNums multiplies two numbers and passes the result to the callback.
+  cb(x * y);
 }
+multiplyNums(2, 4, num => {
+  console.log(`The mulltiplications of the two numbers is ${num}.`);
+});
 
-function contains(item, list, cb) {
+function contains(arr, list, cb) {
   // contains checks if an item is present inside of the given array/list.
   // Pass true to the callback if it is, otherwise pass false.
+  const isInArray = () => {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i] === list) {
+        return true;
+      }
+    }
+    return false;
+  };
+  cb(isInArray());
 }
 
-/* STRETCH PROBLEM */
+contains(items, "Gum", result => {
+  console.log(result ? "Gum is in the array" : "Gum is not in the array");
+});
 
-function removeDuplicates(array, cb) {
+/* STRETCH PROBLEM */
+let array = [1, 2, 3, 2, 3, 2, 5, 6, 6, 8];
+function removeDuplicates(arr, cb) {
   // removeDuplicates removes all duplicate values from the given array.
   // Pass the duplicate free array to the callback function.
   // Do not mutate the original array.
+  const rem = new Set(arr);
+  cb([...rem]);
 }
+removeDuplicates(array, lastItem => {
+  console.log(`The unique items are ${lastItem}`);
+});
